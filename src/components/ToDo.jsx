@@ -31,6 +31,14 @@ const ToDo = props => {
         console.log(listOfToDos)
     }
 
+    const deleteTask = (iDelete) =>{
+        //deletes task on the index number(i) passed from the onClick event
+        const keepList = listOfToDos.filter((todo, i) => {
+        return i !== iDelete;
+        });
+        setListOfToDos(keepList);
+    };
+
     return (
         <div className='container'>
             <form onSubmit={createToDo}>
@@ -52,7 +60,7 @@ const ToDo = props => {
                         return (
                             <div key={i} style={{textDecoration: task.isDone ? 'line-through' :'none'  }}>
                                 <p><input type="checkbox" name="" id="" onClick={(e)=>toggleDone(i)}/>{task.toDoName}</p>
-                                <p><input type="submit" value="" /></p>
+                                <button className="btn btn-danger btn-sm" onClick={(e)=>deleteTask(i)} >Delete</button>
                             </div>
 
                         )
