@@ -20,7 +20,7 @@ const ToDo = props => {
     }
 
     //toggle checkllist item
-    const toggleDone = (i)=>{
+    const toggleDone = (i) => {
         console.log("toggle test for list number", i)
         //toggle completed and update the state 
         // create copy
@@ -31,10 +31,10 @@ const ToDo = props => {
         console.log(listOfToDos)
     }
 
-    const deleteTask = (iDelete) =>{
+    const deleteTask = (iDelete) => {
         //deletes task on the index number(i) passed from the onClick event
         const keepList = listOfToDos.filter((todo, i) => {
-        return i !== iDelete;
+            return i !== iDelete;
         });
         setListOfToDos(keepList);
     };
@@ -45,7 +45,6 @@ const ToDo = props => {
                 <div className="form-group">
                     <label htmlFor="">Add new to do list item:</label>
                     <input type="text" name="" id="" className="form-control" onChange={(e) => setToDoName(e.target.value)} />
-                    <br />
                     <input type="submit" value="Create to do list item" className='btn btn-primary' />
                 </div>
             </form>
@@ -58,9 +57,13 @@ const ToDo = props => {
                     //runs on click event to strile line through when checked
                     listOfToDos.map((task, i) => {
                         return (
-                            <div key={i} style={{textDecoration: task.isDone ? 'line-through' :'none'  }}>
-                                <p><input type="checkbox" name="" id="" onClick={(e)=>toggleDone(i)}/>{task.toDoName}</p>
-                                <button className="btn btn-danger btn-sm" onClick={(e)=>deleteTask(i)} >Delete</button>
+                            <div key={i} style={{ textDecoration: task.isDone ? 'line-through' : 'none' }}>
+                                <div className='d-inline-flex'>
+                                    <p><input type="checkbox" name="" id="" onClick={(e) => toggleDone(i)} />{task.toDoName}</p>
+                                    <button className="btn btn-danger btn-sm" onClick={(e) => deleteTask(i)} >Delete</button>
+                                </div>
+                                <br />
+                                <p></p>
                             </div>
 
                         )
