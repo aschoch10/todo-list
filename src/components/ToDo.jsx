@@ -44,7 +44,7 @@ const ToDo = props => {
             <form onSubmit={createToDo}>
                 <div className="form-group">
                     <label htmlFor="">Add new to do list item:</label>
-                    <input type="text" name="" id="" className="form-control" onChange={(e) => setToDoName(e.target.value)} />
+                    <input type="text" className="form-control" onChange={(e) => setToDoName(e.target.value)} value = {toDoName}/>
                     <input type="submit" value="Create to do list item" className='btn btn-primary' />
                 </div>
             </form>
@@ -52,20 +52,19 @@ const ToDo = props => {
             <div>
                 <h2>To Do list:</h2>
                 {
-
                     //iterates through list of todos
-                    //runs on click event to strile line through when checked
+                    //runs on click event to strike line through when checked
                     listOfToDos.map((task, i) => {
                         return (
                             <div key={i} style={{ textDecoration: task.isDone ? 'line-through' : 'none' }}>
                                 <div className='d-inline-flex'>
-                                    <p><input type="checkbox" name="" id="" onClick={(e) => toggleDone(i)} />{task.toDoName}</p>
-                                    <button className="btn btn-danger btn-sm" onClick={(e) => deleteTask(i)} >Delete</button>
+                                    <p><input type="checkbox" onClick={(e) => toggleDone(i)} checked = {task.isDone}/>{task.toDoName} </p>
+                                    <br />
+                                    <button className="btn btn-danger btn-sm" onClick={(i) => deleteTask()} >Delete</button>
                                 </div>
                                 <br />
                                 <p></p>
                             </div>
-
                         )
                     })
                 }
